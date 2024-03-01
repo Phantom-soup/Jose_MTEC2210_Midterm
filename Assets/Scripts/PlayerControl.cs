@@ -10,7 +10,11 @@ public class PlayerControl : MonoBehaviour
     float currentSpeed;
     public Color turboColor;
     private Color defaultColor;
+    
     public SpriteRenderer sr;
+    
+    public AudioClip clip;
+    AudioSource audioSource;
 
     private Item lastItemCollided;
 
@@ -19,7 +23,7 @@ public class PlayerControl : MonoBehaviour
     {
         //sr = GetComponent<SpriteRenderer>();
         defaultColor = Color.white;
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,8 +42,8 @@ public class PlayerControl : MonoBehaviour
 
         float xMove = Input.GetAxis("Horizontal");
         float yMove = Input.GetAxis("Vertical");
+        
         transform.Translate(xMove * currentSpeed * Time.deltaTime, yMove * currentSpeed * Time.deltaTime, 0);
-
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -51,6 +55,7 @@ public class PlayerControl : MonoBehaviour
             defaultColor = lastItemCollided.itemColor;
             sr.color = defaultColor;
             Destroy(collision.gameObject);
+            audioSource.PlayOneShot(clip);
         }
     }
 
