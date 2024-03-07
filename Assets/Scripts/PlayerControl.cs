@@ -40,10 +40,9 @@ public class PlayerControl : MonoBehaviour
             sr.color = defaultColor;
         }
 
-        float xMove = Input.GetAxis("Horizontal");
-        float yMove = Input.GetAxis("Vertical");
+        float xMove = Input.GetAxisRaw("Horizontal");
         
-        transform.Translate(xMove * currentSpeed * Time.deltaTime, yMove * currentSpeed * Time.deltaTime, 0);
+        transform.Translate(xMove * currentSpeed * Time.deltaTime, 0, 0);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

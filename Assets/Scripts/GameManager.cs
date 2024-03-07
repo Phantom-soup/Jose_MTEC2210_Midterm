@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject Item;
+    public GameObject Fire;
+
     public Transform Northpoint;
     public Transform Eastpoint;
     public Transform Southpoint;
@@ -43,8 +45,7 @@ public class GameManager : MonoBehaviour
 
     private Vector2 pos(){
         float xValue = Random.Range(Westpoint.position.x,Eastpoint.position.x);
-        float yValue = Random.Range(Northpoint.position.y,Southpoint.position.y);
-        Vector2 temp = new Vector2(xValue, yValue);
+        Vector2 temp = new Vector2(xValue, Northpoint.position.y);
         return Camera.main.ScreenToWorldPoint(temp);
     }
 

@@ -1,11 +1,15 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
 using UnityEngine;
 
 public class Item : MonoBehaviour
 {
     public Color itemColor;
+
+    public float minimumSpeed = 5;
+    public float maximumSpeed = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +20,8 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        float fallSpeed = Random.Range(minimumSpeed, maximumSpeed);
+        transform.Translate(0, -(fallSpeed * Time.deltaTime), 0);
     }
 
     
