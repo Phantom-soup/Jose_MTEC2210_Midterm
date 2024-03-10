@@ -3,7 +3,13 @@ guid: 981a37f73c7971847a800bfd1ace6d30
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Item: {fileID: 4653955658594947910, guid: 2c5a99bfb5f47ae4fabf8bd97884fec1, type: 3}
+  - Fire: {fileID: 3461457258800095402, guid: 5fa0bd896ca90544e947446bc91856bf, type: 3}
+  - Northpoint: {instanceID: 0}
+  - Eastpoint: {instanceID: 0}
+  - Southpoint: {instanceID: 0}
+  - Westpoint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

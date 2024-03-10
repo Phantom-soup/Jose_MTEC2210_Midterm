@@ -8,8 +8,10 @@ public class Item : MonoBehaviour
 {
     public Color itemColor;
 
-    public float minimumSpeed = 5;
-    public float maximumSpeed = 10;
+    public int minimumSpeed = 1;
+    public int maximumSpeed = 15;
+
+    public int value;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,5 @@ public class Item : MonoBehaviour
         float fallSpeed = Random.Range(minimumSpeed, maximumSpeed);
         transform.Translate(0, -(fallSpeed * Time.deltaTime), 0);
     }
-
     
 }

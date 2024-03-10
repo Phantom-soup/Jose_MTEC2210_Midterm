@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    public GameManager gm;
     public float speed = 5;
     float turboSpeed = 10;
     float currentSpeed;
@@ -16,7 +17,7 @@ public class PlayerControl : MonoBehaviour
     public AudioClip clip;
     AudioSource audioSource;
 
-    private Item lastItemCollided;
+    public Item lastItemCollided;
 
     // Start is called before the first frame update
     void Start()
@@ -47,21 +48,21 @@ public class PlayerControl : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Item")
-        {
+        if (collision.gameObject.tag == "Item"){
             Debug.Log("Collision");
             lastItemCollided = collision.gameObject.GetComponent<Item>();
             defaultColor = lastItemCollided.itemColor;
             sr.color = defaultColor;
             Destroy(collision.gameObject);
+
             audioSource.PlayOneShot(clip);
+            //gm.IncreaseScore();
+            int tempValue = collision.gameObject.GetComponent<Item>().value;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-            if (collision.tag == "Fire")
-            {
+    void OnTriggerEnter2D(Collider2D collision){
+            if (collision.tag == "Fire"){
                 Destroy(gameObject);
             }
     }
