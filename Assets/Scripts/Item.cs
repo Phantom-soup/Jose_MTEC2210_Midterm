@@ -8,8 +8,8 @@ public class Item : MonoBehaviour
 {
     public Color itemColor;
 
-    public int minimumSpeed = 1;
-    public int maximumSpeed = 15;
+    public float minimumSpeed = 1;
+    public float maximumSpeed = 15;
 
     public int value;
 
@@ -24,6 +24,10 @@ public class Item : MonoBehaviour
     {
         float fallSpeed = Random.Range(minimumSpeed, maximumSpeed);
         transform.Translate(0, -(fallSpeed * Time.deltaTime), 0);
+
+        if (transform.position.y < -10) {
+            Destroy(gameObject);
+        }
     }
     
 }

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1095430883926007478}
   - component: {fileID: 5350595846534880440}
+  - component: {fileID: 1093163542488105886}
   m_Layer: 0
-  m_Name: ItemExtraLife
+  m_Name: Transporter
   m_TagString: Transporter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,3 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1093163542488105886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594978952408346891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 684e10c37fce5834090677d3b32097eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemColor: {r: 1, g: 1, b: 1, a: 0}
+  minimumSpeed: 1
+  maximumSpeed: 15
+  value: 5

@@ -6,56 +6,69 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public GameManager gm;
-    public float speed = 5;
-    float turboSpeed = 10;
+    public float speed = 10;
+    float turboSpeed = 20;
     float currentSpeed;
     public Color turboColor;
     private Color defaultColor;
     
     public SpriteRenderer sr;
     
-    public AudioClip clip;
+    public AudioClip subtank;
+    public AudioClip extraLife;
     AudioSource audioSource;
 
-    public Item lastItemCollided;
+    private Item lastItemCollided;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         //sr = GetComponent<SpriteRenderer>();
         defaultColor = Color.white;
         audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
+    void Update(){
+        float xMove = Input.GetAxisRaw("Horizontal");
+        transform.Translate(xMove * currentSpeed * Time.deltaTime, 0, 0);
+        /*
+        if (Input.GetKey(KeyCode.Space)){
             currentSpeed = turboSpeed;
             sr.color = turboColor;
         }
-        else
-        {
+        else{
             currentSpeed = speed;
             sr.color = defaultColor;
         }
+        */
+        if (xMove != 0){
 
-        float xMove = Input.GetAxisRaw("Horizontal");
-        
-        transform.Translate(xMove * currentSpeed * Time.deltaTime, 0, 0);
+            if (xMove < 0){
+                sr.flipX = true;
+            }
+            else{
+                sr.flipX = false;
+            }
+        }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
+    public void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.tag == "Item"){
-            Debug.Log("Collision");
             lastItemCollided = collision.gameObject.GetComponent<Item>();
-            defaultColor = lastItemCollided.itemColor;
-            sr.color = defaultColor;
+            Destroy(collision.gameObject);
+            Debug.Log("Item Collision");
+
+            audioSource.PlayOneShot(subtank);
+            
+            int tempValue = collision.gameObject.GetComponent<Item>().value;
+            gm.AdjustScore(tempValue);
+        }
+        if (collision.gameObject.tag == "Transporter"){
+            Debug.Log("Teleport to next theme");
+            lastItemCollided = collision.gameObject.GetComponent<Item>();
             Destroy(collision.gameObject);
 
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(extraLife);
             //gm.IncreaseScore();
             int tempValue = collision.gameObject.GetComponent<Item>().value;
         }

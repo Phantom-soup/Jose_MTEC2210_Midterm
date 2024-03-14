@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public GameObject Item;
     public GameObject Fire;
-    public GameObject Killfloor;
 
     public Transform Northpoint;
     public Transform Eastpoint;
@@ -15,13 +14,8 @@ public class GameManager : MonoBehaviour
     public Transform Westpoint;
 
     public float itemSpawnDelay = 2;
-    public float fireSpawnTime = 1;
     float timeElapsed = 0;
-    public float fireTime = 0;
     //bool timer = false;
-
-    [Range (1, 10)] public int itemcount = 5;
-    [Range(1, 10)] public int firecount = 8;
 
     public int score;
     public TextMeshPro scoreText;
@@ -42,23 +36,11 @@ public class GameManager : MonoBehaviour
             timeElapsed = 0;
         }
 
-        if (fireTime < fireSpawnTime) { 
-            fireTime += Time.deltaTime;
-        } else
-        {
-            SpawnFire();
-            fireTime = 0;
-        }
-
         scoreText.text = "Score: " + score.ToString();
     }
     public void SpawnItem(){
         int randomIndex = Random.Range (0, Collectibles.Length);
         Instantiate(Collectibles[randomIndex], pos(), Quaternion.identity);
-    }
-
-    public void SpawnFire(){
-        Instantiate(Fire, pos(), Quaternion.identity);
     }
 
     private Vector2 pos(){
@@ -67,13 +49,7 @@ public class GameManager : MonoBehaviour
         return temp;
     }
 
-    public void IncreaseScore()
-    {
-        score += 10;
-    }
-
-    public void AdjustScore(int value)
-    {
+    public void AdjustScore(int value){
         score += value;
     }
 }
