@@ -183,9 +183,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981a37f73c7971847a800bfd1ace6d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pc: {fileID: 0}
-  Item: {fileID: 4653955658594947910, guid: 2c5a99bfb5f47ae4fabf8bd97884fec1, type: 3}
-  Fire: {fileID: 3461457258800095402, guid: 5fa0bd896ca90544e947446bc91856bf, type: 3}
+  Item:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Fire:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   audioSource: {fileID: 0}
   death: {fileID: 8300000, guid: 5212bed159912fd4a9f73f3bf09a05db, type: 3}
   Northpoint: {fileID: 1213792646}
@@ -386,7 +391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.18, y: 2.93}
+  m_AnchoredPosition: {x: 2.14, y: 2.91}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &519420028
@@ -543,7 +548,7 @@ Transform:
   m_GameObject: {fileID: 661236067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.8, y: 0, z: 0}
+  m_LocalPosition: {x: -7.77, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1175,7 +1180,7 @@ Transform:
   m_GameObject: {fileID: 2049639710}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.8, y: 0, z: 0}
+  m_LocalPosition: {x: 7.6, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
