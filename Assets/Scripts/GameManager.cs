@@ -5,8 +5,11 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject Item;
-    public GameObject Fire;
+
+    public GameObject[] Item;
+    public GameObject[] Fire;
+    public AudioSource audioSource;
+    public AudioClip death;
 
     public Transform Northpoint;
     public Transform Eastpoint;
@@ -17,7 +20,7 @@ public class GameManager : MonoBehaviour
     float timeElapsed = 0;
     //bool timer = false;
 
-    public int score;
+    public int score = 0;
     public TextMeshPro scoreText;
 
     public GameObject[] Collectibles;
@@ -32,6 +35,24 @@ public class GameManager : MonoBehaviour
         if (timeElapsed < itemSpawnDelay) {
             timeElapsed += Time.deltaTime;
         } else {
+            SpawnItem();
+            timeElapsed = 0;
+        }
+        if (timeElapsed < itemSpawnDelay)
+        {
+            timeElapsed += Time.deltaTime;
+        }
+        else
+        {
+            SpawnItem();
+            timeElapsed = 0;
+        }
+        if (timeElapsed < itemSpawnDelay)
+        {
+            timeElapsed += Time.deltaTime;
+        }
+        else
+        {
             SpawnItem();
             timeElapsed = 0;
         }
@@ -52,4 +73,9 @@ public class GameManager : MonoBehaviour
     public void AdjustScore(int value){
         score += value;
     }
+
+    public void PlayDeathSound() {
+        audioSource.PlayOneShot(death);
+    }
+
 }

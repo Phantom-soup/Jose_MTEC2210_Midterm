@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public GameManager gm;
+     public GameManager gm;
     public float speed = 10;
     float turboSpeed = 20;
     float currentSpeed;
@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
     void Update(){
         float xMove = Input.GetAxisRaw("Horizontal");
         transform.Translate(xMove * currentSpeed * Time.deltaTime, 0, 0);
-        /*
+        
         if (Input.GetKey(KeyCode.Space)){
             currentSpeed = turboSpeed;
             sr.color = turboColor;
@@ -40,9 +40,8 @@ public class PlayerControl : MonoBehaviour
             currentSpeed = speed;
             sr.color = defaultColor;
         }
-        */
+        
         if (xMove != 0){
-
             if (xMove < 0){
                 sr.flipX = true;
             }
@@ -53,6 +52,10 @@ public class PlayerControl : MonoBehaviour
     }
 
     public void OnCollisionEnter2D(Collision2D collision){
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.tag == "Item"){
             lastItemCollided = collision.gameObject.GetComponent<Item>();
             Destroy(collision.gameObject);
@@ -63,7 +66,7 @@ public class PlayerControl : MonoBehaviour
             int tempValue = collision.gameObject.GetComponent<Item>().value;
             gm.AdjustScore(tempValue);
         }
-        if (collision.gameObject.tag == "Transporter"){
+        else if (collision.gameObject.tag == "Transporter"){
             Debug.Log("Teleport to next theme");
             lastItemCollided = collision.gameObject.GetComponent<Item>();
             Destroy(collision.gameObject);
@@ -72,12 +75,10 @@ public class PlayerControl : MonoBehaviour
             //gm.IncreaseScore();
             int tempValue = collision.gameObject.GetComponent<Item>().value;
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision){
-            if (collision.tag == "Fire"){
-                Destroy(gameObject);
-            }
+        else if (collision.tag == "Fire"){
+            gm.PlayDeathSound();
+            Destroy(gameObject);
+        }
     }
 }
 
