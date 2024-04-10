@@ -192,7 +192,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 298540431}
   death: {fileID: 8300000, guid: 5212bed159912fd4a9f73f3bf09a05db, type: 3}
   Northpoint: {fileID: 1213792646}
   Eastpoint: {fileID: 2049639711}
