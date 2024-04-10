@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-     public GameManager gm;
+    public GameManager gm;
     public float speed = 10;
     float turboSpeed = 20;
     float currentSpeed;
@@ -51,10 +51,6 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision){
-        
-    }
-
     public void OnTriggerEnter2D(Collider2D collision){
         if (collision.gameObject.tag == "Item"){
             lastItemCollided = collision.gameObject.GetComponent<Item>();
@@ -72,8 +68,9 @@ public class PlayerControl : MonoBehaviour
             Destroy(collision.gameObject);
 
             audioSource.PlayOneShot(extraLife);
-            //gm.IncreaseScore();
+            
             int tempValue = collision.gameObject.GetComponent<Item>().value;
+            gm.AdjustScore(tempValue);
         }
         else if (collision.tag == "Fire"){
             gm.PlayDeathSound();

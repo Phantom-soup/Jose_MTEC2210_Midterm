@@ -5,15 +5,27 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0,speed * Time.deltaTime,0);
+        transform.Translate(0, speed * Time.deltaTime, 0);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Fire")
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
